@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Terminal, {
   ColorMode,
   TerminalOutput,
   TerminalInput,
-} from 'react-terminal-ui';
+} from "react-terminal-ui";
 
 const TerminalController = (props = {}) => {
   const [terminalLineData, setTerminalLineData] = useState([
-    <TerminalOutput>
+    <TerminalOutput key={0}>
       Welcome to Emad's website. As you can see, you can use the terminal.
+      <br />
       <br />
       Have fun, and don't hesitate to use 'help' if you need it!
     </TerminalOutput>,
@@ -18,7 +19,7 @@ const TerminalController = (props = {}) => {
     let newLineData = [...terminalLineData];
     newLineData.push(<TerminalInput>{terminalInput}</TerminalInput>);
     switch (terminalInput.trim().toLowerCase()) {
-      case 'help':
+      case "help":
         newLineData.push(
           <TerminalOutput>
             Available commands are email,cv, github, linkedin, clear' will clear
@@ -26,11 +27,11 @@ const TerminalController = (props = {}) => {
           </TerminalOutput>
         );
         break;
-      case 'cv':
+      case "cv":
         newLineData.push(
           <TerminalOutput>
             <a
-              style={{ color: 'white', fontSize: '15px' }}
+              style={{ color: "white", fontSize: "15px" }}
               href="https://emadhussien.github.io/mycv/Emad_Hussien_Software_Engineer_Resume.pdf"
               target="_blank"
             >
@@ -39,11 +40,11 @@ const TerminalController = (props = {}) => {
           </TerminalOutput>
         );
         break;
-      case 'github':
+      case "github":
         newLineData.push(
           <TerminalOutput>
             <a
-              style={{ color: 'white', fontSize: '15px' }}
+              style={{ color: "white", fontSize: "15px" }}
               href="https://github.com/EmadHussien"
               target="_blank"
             >
@@ -53,11 +54,11 @@ const TerminalController = (props = {}) => {
         );
         break;
 
-      case 'linkedin':
+      case "linkedin":
         newLineData.push(
           <TerminalOutput>
             <a
-              style={{ color: 'white', fontSize: '15px' }}
+              style={{ color: "white", fontSize: "15px" }}
               href="https://www.linkedin.com/in/emadhussien98"
               target="_blank"
             >
@@ -66,11 +67,11 @@ const TerminalController = (props = {}) => {
           </TerminalOutput>
         );
         break;
-      case 'email':
+      case "email":
         newLineData.push(
           <TerminalOutput>
             <a
-              style={{ color: 'white', fontSize: '15px' }}
+              style={{ color: "white", fontSize: "15px" }}
               href="mailto:emadhussien.fcis@gmail.com"
             >
               emadhussien.fcis@gmail.com
@@ -78,7 +79,7 @@ const TerminalController = (props = {}) => {
           </TerminalOutput>
         );
         break;
-      case 'clear':
+      case "clear":
         newLineData = [];
         break;
       default:
@@ -92,9 +93,9 @@ const TerminalController = (props = {}) => {
   };
 
   return (
-    <div className="container" style={{ height: '100%' }}>
+    <div className="container" style={{ height: "100%" }}>
       <Terminal
-        height="640px"
+        height="100vh"
         colorMode={ColorMode.Dark}
         onInput={handleTerminalInput}
         prompt=">"
